@@ -50,6 +50,7 @@ public class ProductDao extends Dao {
 					Product p = (Product) q.uniqueResult();
 					System.out.println("Going to retreive product");
 		            
+					System.out.println(p.getID());
 		            commit();
 		            System.out.println("Returning product after retreiving");
 		            return p;
@@ -66,11 +67,34 @@ public class ProductDao extends Dao {
 		            begin();
 		            getSession().update(p);
 		            commit();
+		            System.out.println("After updating product in productDao");
+		            return p;
 		        } catch (HibernateException e) {
 		            rollback();
 		            throw new Exception("Could not update the product", e);
 		        }
 			 
-			 return p;
 		    }
+		 
+		 public boolean deleteProduct(Product p) {
+			 
+			 System.out.println("In delete productdao method");
+
+				
+			
+				try {
+					begin();
+					getSession().delete(p);
+					commit();
+					System.out.println("In delete commit");
+					return true;
+				} 
+				catch (HibernateException e) {
+					rollback();
+					e.printStackTrace();
+				} finally {
+					close();
+				}
+				return false;
+			}
 }

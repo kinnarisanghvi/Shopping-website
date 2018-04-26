@@ -3,6 +3,7 @@ package com.me.Controller;
 
 import java.text.DateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
@@ -18,12 +19,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.me.DAO.ProductDao;
 import com.me.DAO.UserDao;
+import com.me.Pojo.Product;
 import com.me.Pojo.Users;
 
 @Controller
 public class MainController{
 	
+	@Autowired
+	@Qualifier("productDao")
+	ProductDao productDao;
 	
 	@Autowired
 	@Qualifier("userDao")
@@ -87,7 +93,11 @@ public class MainController{
 			
 			else {
 				
-				mv = new ModelAndView("loginSuccessful");
+				System.out.println("In user condition");
+				mv = new ModelAndView("productsPage");
+				System.out.println("After adding products for user");
+				List<Product> productList = productDao.list();
+				return new ModelAndView("editProducts", "productList", productList);
 			}
 			return mv;
 		}
