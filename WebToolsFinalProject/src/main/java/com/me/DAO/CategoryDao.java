@@ -81,12 +81,6 @@ public class CategoryDao extends Dao{
 			return false;
 		}
 
-	public void addProduct(Product p) {
-		// TODO Auto-generated method stub
-		
-		
-		
-	}
 
 
 }

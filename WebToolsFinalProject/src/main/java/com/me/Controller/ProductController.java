@@ -57,7 +57,6 @@ public class ProductController {
 		try {
 
 			List<Category> categoryList;
-				
 			
 			System.out.print("addingProduct");
 

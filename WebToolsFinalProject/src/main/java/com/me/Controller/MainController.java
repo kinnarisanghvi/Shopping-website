@@ -34,12 +34,10 @@ public class MainController{
 	@RequestMapping(value="/", method=RequestMethod.GET)
     protected ModelAndView firstPage() {
     	
-
     	ModelAndView mv = new ModelAndView();
     	mv.setViewName("admin");
     	
     	return mv;
-		
 	}
 	
 	@RequestMapping(value="login", method=RequestMethod.GET)
@@ -89,11 +87,12 @@ public class MainController{
 			
 			else if(u.getRole().equals("customer")){
 				
-				System.out.println("In user condition");
+				System.out.println("In customer condition");
 				
+				request.getSession().setAttribute("user", u);
 				System.out.println("After adding products for user");
 				List<Product> productList = productDao.list();
-				mv = new ModelAndView("productPage", "productList", productList);
+				mv = new ModelAndView("userPage", "productList", productList);
 			}
 			return mv;
 			

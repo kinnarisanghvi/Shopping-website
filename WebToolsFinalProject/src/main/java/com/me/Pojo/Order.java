@@ -1,69 +1,69 @@
 package com.me.Pojo;
 
-import java.util.Date;
-
 import javax.persistence.*;
 
 @Entity
-@Table(name="Order")
-class Order{
-	
+@Table(name="Orders")
+public class Order {
+
 	@Id
-	@Column(name="ID",length=50)
-	private String id;
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name = "orderId" , unique = true)
+	private int orderID;
 	
-	@Column(name="orderDate", nullable=false)
-	private Date orderDate;
+	@Column(name="prodName")
+	private String prodName;
 	
-	@Column(name = "Order_Number", nullable = false)
-	private int order_number;
+	@Column(name="orderDate")
+	private String date;
 	
-	@Column(name = "amount", nullable = false)
-	private double amount;
+	@Column(name="prodQuantity")
+	private int prodQuantity;
 	
 	@ManyToOne
-	@JoinColumn(name = "User_ID", nullable = false, //
-    foreignKey = @ForeignKey(name = "User_ID_ORD_FK") )
+	@JoinColumn(name="userId", nullable = false)
 	private Users user;
-	
+
+	public int getOrderID() {
+		return orderID;
+	}
+
+	public void setOrderID(int orderID) {
+		this.orderID = orderID;
+	}
+
+	public String getProdName() {
+		return prodName;
+	}
+
+	public void setProdName(String prodName) {
+		this.prodName = prodName;
+	}
+
+	public String getDate() {
+		return date;
+	}
+
+	public void setDate(String date) {
+		this.date = date;
+	}
+
+	public int getProdQuantity() {
+		return prodQuantity;
+	}
+
+	public void setProdQuantity(int prodQuantity) {
+		this.prodQuantity = prodQuantity;
+	}
+
 	public Users getUser() {
 		return user;
 	}
-	
-	public void setUsers(Users user) {
+
+	public void setUser(Users user) {
 		this.user = user;
 	}
-	
-	public String getId() {
-		return id;
-	}
-	
-	public void setId(String id) {
-		this.id = id;
-	}
-	
-	public Date getOrderDate() {
-		return orderDate;
-	}
-	
-	public void setOrderDate(Date orderDate) {
-		this.orderDate = orderDate;
-	}
-	
-	public int getOrder_number() {
-		return order_number;
-	}
-	
-	public void setOrder_number(int order_number) {
-		this.order_number = order_number;
-	}
-	
-	public double getAmount() {
-		return amount;
-	}
-	
-	public void setAmount(double amount) {
-		this.amount = amount;
-	}
-	    
+
+
+
 }
