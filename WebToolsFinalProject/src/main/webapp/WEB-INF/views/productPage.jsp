@@ -23,6 +23,7 @@
 				<td>"${prod.pPrice}"></td>
 				<td>"${prod.pType}"></td> 
 				 <td>
+				<td> <input type="number" name="quantity" value="0" /> 
 				<input type="submit" value="Add to cart">                     
                  </td>
 		</c:forEach>

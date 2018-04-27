@@ -7,13 +7,14 @@
 <title>Insert title here</title>
 </head>
 <body>
-     <h1> Welcome admin </h1> 
-     
-     <a href="${pageContext.request.contextPath}/manageProducts"> Manage Products</a>
-     
-     <a href="${pageContext.request.contextPath}/addProduct"> Add Products</a> 
-     
-     <a href="${pageContext.request.contextPath}/addCategory"> Add Category</a> 
-    
+  	<form method="POST" action="${pageContext.request.contextPath}/addCategory">
+      <table>
+               <tr>
+                   <td>Name *</td>
+                   <td><input type="text" name="name" /></td>
+               </tr>
+       </table>
+   			<input type="submit" value="ADD CATEGORY" />
+   	</form>		
 </body>
 </html>

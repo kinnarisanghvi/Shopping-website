@@ -1,10 +1,7 @@
 package com.me.Controller;
 
 
-import java.text.DateFormat;
-import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -13,7 +10,6 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -76,7 +72,7 @@ public class MainController{
 			System.out.println("login user");
 			
 			Users u = userDao.getUser(username,password,role);
-			ModelAndView mv;
+			ModelAndView mv = null;
 			
 			if(u == null){
 				System.out.println("UserName/Password does not exist");
@@ -91,15 +87,16 @@ public class MainController{
 				System.out.println("After setting mv for admin");
 			}
 			
-			else {
+			else if(u.getRole().equals("customer")){
 				
 				System.out.println("In user condition");
-				mv = new ModelAndView("productsPage");
+				
 				System.out.println("After adding products for user");
 				List<Product> productList = productDao.list();
-				return new ModelAndView("editProducts", "productList", productList);
+				mv = new ModelAndView("productPage", "productList", productList);
 			}
 			return mv;
+			
 		}
 
 	
@@ -123,8 +120,6 @@ public class MainController{
 			u.setFirstName(fn);
 			u.setLastName(ln);
 			u.setUsername(username);
-			u.setAddress(address);
-			u.setPhone(phone);
 			u.setPassword(password);
 			u.setRole(role);
 			

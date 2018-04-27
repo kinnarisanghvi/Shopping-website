@@ -2,65 +2,68 @@ package com.me.Pojo;
 
 import java.util.Date;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name="Order")
 class Order{
 	
+	@Id
+	@Column(name="ID",length=50)
 	private String id;
+	
+	@Column(name="orderDate", nullable=false)
 	private Date orderDate;
+	
+	@Column(name = "Order_Number", nullable = false)
 	private int order_number;
+	
+	@Column(name = "amount", nullable = false)
 	private double amount;
 	
-	private String customer_name;
-	private String customer_address;
-	private String customer_phone;
+	@ManyToOne
+	@JoinColumn(name = "User_ID", nullable = false, //
+    foreignKey = @ForeignKey(name = "User_ID_ORD_FK") )
+	private Users user;
+	
+	public Users getUser() {
+		return user;
+	}
+	
+	public void setUsers(Users user) {
+		this.user = user;
+	}
 	
 	public String getId() {
 		return id;
 	}
+	
 	public void setId(String id) {
 		this.id = id;
 	}
+	
 	public Date getOrderDate() {
 		return orderDate;
 	}
+	
 	public void setOrderDate(Date orderDate) {
 		this.orderDate = orderDate;
 	}
+	
 	public int getOrder_number() {
 		return order_number;
 	}
+	
 	public void setOrder_number(int order_number) {
 		this.order_number = order_number;
 	}
+	
 	public double getAmount() {
 		return amount;
 	}
+	
 	public void setAmount(double amount) {
 		this.amount = amount;
 	}
-	public String getCustomer_name() {
-		return customer_name;
-	}
-	public void setCustomer_name(String customer_name) {
-		this.customer_name = customer_name;
-	}
-	public String getCustomer_address() {
-		return customer_address;
-	}
-	public void setCustomer_address(String customer_address) {
-		this.customer_address = customer_address;
-	}
-//	public String getCustomerEmail() {
-//		return customerEmail;
-//	}
-//	public void setCustomerEmail(String customerEmail) {
-//		this.customerEmail = customerEmail;
-//	}
-	
-	public String getCustomer_phone() {
-		return customer_phone;
-	}
-	public void setCustomer_phone(String customer_phone) {
-		this.customer_phone = customer_phone;
-	}
-    
+	    
 }

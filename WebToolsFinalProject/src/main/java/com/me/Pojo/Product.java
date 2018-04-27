@@ -7,19 +7,46 @@ import javax.persistence.*;
 public class Product {
 
 	@Id
-	@Column(name = "ProductID", length = 20, nullable = false)
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "ID", length = 20, nullable = false)
 	private int ID;
 	
-	
-	@Column(name = "ProductName", length = 20, nullable = false)
+	@Column(name = "PName", length = 20, nullable = false)
 	private String pName;
 	
-	@Column(name = "ProductType", length = 20, nullable = false)
-	private String pType;
+	@Column(name = "PCode", length = 20, nullable = false)
+	private String pCode;
 	
-	@Column(name = "ProductPrice", length = 20, nullable = false)
+	@Column(name = "PPrice", length = 20, nullable = false)
 	private float pPrice;
 	
+	@Column(name = "PDescription", length = 20, nullable = false)
+	private String description;
+	
+	public String getpCode() {
+		return pCode;
+	}
+	public void setpCode(String pCode) {
+		this.pCode = pCode;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	public Category getCategory() {
+		return category;
+	}
+	public void setCategory(Category category) {
+		this.category = category;
+	}
+	public void setpPrice(float pPrice) {
+		this.pPrice = pPrice;
+	}
+	@ManyToOne
+	@JoinColumn(name="categoryid", nullable=false)
+	private Category category;	
 	
 	public int getID() {
 		return ID;
@@ -33,18 +60,11 @@ public class Product {
 	public void setpName(String pName) {
 		this.pName = pName;
 	}
-	public String getpType() {
-		return pType;
-	}
-	public void setpType(String pType) {
-		this.pType = pType;
-	}
+	
 	public Float getpPrice() {
 		return pPrice;
 	}
 	public void setpPrice(Float pPrice) {
 		this.pPrice = pPrice;
-	}
-	
-	 
+	} 
 }

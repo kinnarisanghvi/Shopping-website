@@ -13,16 +13,20 @@
 			<td><b>Product ID</b></td>
 			<td><b>Product name</b></td>
 			<td><b>Product price</b></td>
-			<td><b>Product type</b></td>
+			<td><b>Product category</b></td>
+			<td><b>Product code</b></td>
+			<td><b>Product description</b></td>
 		</tr>
 		<c:forEach var="prod" items="${productList}">
     		<form method="POST" action ="${pageContext.request.contextPath}/actionOnProduct">
-   		
 			<tr>
-				<td><input type="number" name="id" value="${prod.ID}"></td> 
+				<td><input type="number" name="id" value="${prod.ID}" readonly="readonly"></td> 
 				<td><input type="text" name="pName" value="${prod.pName}"></td>
 				<td><input type="number" name="pPrice"  step="0.01" value="${prod.pPrice}"></td>
-				<td><input type="text" name="pType" value="${prod.pType}"></td> 
+				<td><input type="text" name="category" value="${prod.category.categoryName}"></td>
+				<td><input type="text" name="code" value="${prod.pCode}"></td>
+				<td><input type="text" name="description" value="${prod.description}"></td>
+				 
 				<td><input type="submit" name="update" value="UpdateButton">
     		        <input type="submit" name="delete" value="DeleteButton">                   
 		        </td>

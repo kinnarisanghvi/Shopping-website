@@ -16,12 +16,6 @@ public class Users {
 	@Column(name = "Password", length = 20, nullable = false)
 	private String password;
 	
-	@Column(name = "Phone", length = 20, nullable = false)
-	private String phone;
-	
-	@Column(name = "Address", length = 20, nullable = false)
-	private String address;
-	
 	@Column(name = "FirstName", length = 20, nullable = false)
 	private String firstName;
 	
@@ -51,18 +45,8 @@ public class Users {
 	public void setRole(String role) {
 		this.role = role;
 	}
-	public String getPhone() {
-		return phone;
-	}
-	public void setPhone(String phone) {
-		this.phone = phone;
-	}
-	public String getAddress() {
-		return address;
-	}
-	public void setAddress(String address) {
-		this.address = address;
-	}
+	
+	
 	public String getFirstName() {
 		return firstName;
 	}

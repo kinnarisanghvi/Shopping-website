@@ -1,12 +1,10 @@
 package com.me.DAO;
-
 import java.util.List;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 
 import com.me.Pojo.Product;
-import com.me.Pojo.Users;
 
 public class ProductDao extends Dao {
 

@@ -14,5 +14,7 @@
   		
   		<mapping class="com.me.Pojo.Users"/>
   		<mapping class="com.me.Pojo.Product"/>
+  		<mapping class="com.me.Pojo.Category"/>
+  		 
     </session-factory>
 </hibernate-configuration>
